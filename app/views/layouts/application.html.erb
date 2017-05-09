@@ -10,6 +10,10 @@
   </head>
 
   <body>
+  <%= flash.each do |name, message| %>
+  <p><%= message  %> </p>
+  <% end %>
+
   <a href="/">HOME</a>
   <a href="/recipes/new">New Recipe</a>
     <%= yield %>
