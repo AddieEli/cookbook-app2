@@ -1,11 +1,5 @@
 class RecipesController < ApplicationController
 
-  def one_recipe_action
-    @recipe = Recipe.first
-    render 'one_recipe_view.html.erb'
-    
-  end
-
   def index
     @recipes = Recipe.all
   end
@@ -26,7 +20,8 @@ class RecipesController < ApplicationController
                         directions: params[:directions]
                         )
       recipe.save
-      redirect_to "/recipes/#{recipe.id}"
+      flash[:success] = "Recipe Successfully Created"
+      redirect_to "/recipes/#{ recipe.id}"
   end 
 
   def edit
@@ -42,12 +37,14 @@ class RecipesController < ApplicationController
                         directions: params[:directions]
                             )
     recipe.save
+    flash[:success] = "Recipe Successfully Updated"
+    redirect_to "/recipes/#{ recipe.id }"
   end 
 
   def destroy
     recipe = Recipe.find(params[:id])
     recipe.destroy
-    flash[:success] = "Recipe Successfully Created"
+    flash[:warning] = "Recipe Destroyed"
     redirect_to "/"
   end 
 

@@ -10,12 +10,17 @@
   </head>
 
   <body>
-  <%= flash.each do |name, message| %>
-  <p><%= message  %> </p>
-  <% end %>
+ <div class="container">
+      <% flash.each do |name, message| %>
+        <div class="alert alert-<%= name %> alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= message %>
+        </div>
+      <% end %>
 
-  <a href="/">HOME</a>
-  <a href="/recipes/new">New Recipe</a>
-    <%= yield %>
+      <a href="/">Home</a>
+      <a href="/recipes/new">New Recipe</a>
+      <%= yield %>
+    </div>
   </body>
 </html>
