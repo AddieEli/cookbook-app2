@@ -12,4 +12,7 @@ Rails.application.routes.draw do
 
   delete '/recipes/:id' => 'recipes#destroy'
 
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
 end

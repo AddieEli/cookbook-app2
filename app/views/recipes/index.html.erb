@@ -2,6 +2,7 @@
   <% @recipes.each do |recipe|%>     
   <div class="col-md-4">
   <div class="thumbnail well">
+  <p> You have visited this page <%= @visit_count %> times.</p>
       <h2><a href="/recipes/<%= recipe.id %>"><%= recipe.title %></a></h2>
       <h4> <%= recipe.chef %> </h4>
       <img src="<%= recipe.image_url %>" alt="<%= recipe.title %>">
