@@ -26,9 +26,10 @@ class RecipesController < ApplicationController
   def create
     recipe = Recipe.new(
                         title: params[:title], 
-                        chef: params[:chef],
                         ingredients: params[:ingredients],
-                        directions: params[:directions]
+                        directions: params[:directions],
+                        prep_time: params[:prep_time],
+                        user_id: current_user.id
                         )
       recipe.save
       flash[:success] = "Recipe Successfully Created"
@@ -42,10 +43,10 @@ class RecipesController < ApplicationController
   def update
     recipe = Recipe.find(params[:id])
     recipe.assign_attributes(
-                        title: params[:title], 
-                        chef: params[:chef],
+                        title: params[:title],                 
                         ingredients: params[:ingredients],
-                        directions: params[:directions]
+                        directions: params[:directions],
+                        prep_time: params[:prep_time]
                             )
     recipe.save
     flash[:success] = "Recipe Successfully Updated"
